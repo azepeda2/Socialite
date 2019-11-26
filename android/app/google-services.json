@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "367335486176",
+    "firebase_url": "https://socialite-4d0b3.firebaseio.com",
+    "project_id": "socialite-4d0b3",
+    "storage_bucket": "socialite-4d0b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367335486176:android:221d616a7851b86ca85685",
+        "android_client_info": {
+          "package_name": "com.alejandrozepeda.fluttershare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367335486176-3pi6giqqhjmo3p7qcec9n758lp5jiqdq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alejandrozepeda.fluttershare",
+            "certificate_hash": "4a8774fb3485c48d5f25d57ae867eb2aa953f840"
+          }
+        },
+        {
+          "client_id": "367335486176-m2lidpb7o8nndae02e2fgqmk8a69oqqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Nbe_MyUWvN0vNHiXpw8DW03LyHtVtmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367335486176-m2lidpb7o8nndae02e2fgqmk8a69oqqu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "367335486176-rvro3ep56juto4280gcqcuosf1bgos4q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alejandrozepeda.fluttershare"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
