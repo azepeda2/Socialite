@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttershare/pages/home.dart';
@@ -11,6 +12,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  TextEditingController searchController = TextEditingController();
   Future<QuerySnapshot> searchResultsFuture;
 
   handleSearch(String query) {
@@ -21,10 +23,16 @@ class _SearchState extends State<Search> {
       searchResultsFuture = users;
     });
   }
+
+  clearSearch() {
+    searchController.clear();
+  } 
+
   AppBar buildSearchField() {
     return AppBar(
       backgroundColor: Colors.white,
       title: TextFormField(
+        controller: searchController,
         decoration: InputDecoration(
           hintText: "Search for a user...",
           filled: true,
@@ -34,7 +42,7 @@ class _SearchState extends State<Search> {
           ),
           suffixIcon: IconButton(
             icon: Icon(Icons.clear),
-            onPressed: () => print("cleared search box"),
+            onPressed: clearSearch,
           ),
         ),
         onFieldSubmitted: handleSearch,
@@ -44,6 +52,7 @@ class _SearchState extends State<Search> {
 
   Container buildNoContent() {
     final Orientation orientation = MediaQuery.of(context).orientation;
+
     return Container(
       child: Center(
         child: ListView(
@@ -73,10 +82,11 @@ class _SearchState extends State<Search> {
         if (!snapshot.hasData) {
           return circularProgress();
         }
-        List<Text> searchResults = [];
-        snapshot.data.documents.foreach((doc) {
+        List<UserResult> searchResults = [];
+        snapshot.data.documents.forEach((doc) {
           User user = User.fromDocument(doc);
-          searchResults.add(Text(user.username));
+          UserResult searchResult = UserResult(user);
+          searchResults.add(searchResult);
         });
         return ListView(
           children: searchResults,
@@ -97,8 +107,30 @@ class _SearchState extends State<Search> {
 }
 
 class UserResult extends StatelessWidget {
+  final User user;
+
+  UserResult(this.user);
+
   @override
   Widget build(BuildContext context) {
-    return Text("User Result");
+    return Container(
+      color: Theme.of(context).primaryColor.withOpacity(0.7),
+      child: Column(children: <Widget>[
+        GestureDetector(
+          onTap: () => print("tapped"),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: CachedNetworkImageProvider(user.photoUrl),
+              backgroundColor: Colors.grey,
+            ),
+            title: Text(user.displayName, style: TextStyle(color: Colors.white),),
+            subtitle: Text(user.username, style: TextStyle(color: Colors.white),),
+          ),
+        ),
+        Divider(
+          height: 2.0,
+          color: Colors.white54,),
+      ],),
+    );
   }
 }

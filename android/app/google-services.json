@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "367335486176-3pi6giqqhjmo3p7qcec9n758lp5jiqdq.apps.googleusercontent.com",
+          "client_id": "367335486176-2h6svmca283uq9npkmh5t19dvpghnose.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.alejandrozepeda.fluttershare",
-            "certificate_hash": "4a8774fb3485c48d5f25d57ae867eb2aa953f840"
+            "certificate_hash": "0cee60c6657abb89d5071428b987b180a420767e"
           }
         },
         {
